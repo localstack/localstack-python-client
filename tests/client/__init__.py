@@ -1,21 +1,18 @@
 import time
 import subprocess32 as subprocess
 
-
-def stop_docker():
-    subprocess.check_call('docker stop localstack', shell=True)
+STATE = {}
 
 
 def setup_package():
-    subprocess.Popen('make docker-run-background', shell=True)
+    if STATE.get('process'):
+        return
+    STATE['process'] = subprocess.Popen(['localstack', 'start'])
     time.sleep(10)
 
 
 def teardown_package():
-    print("Shutdown")
-    stop_docker()
-
-
-if __name__ == '__main__':
-    setup_package()
-    teardown_package()
+    # TODO implement "stop" command in LocalStack!
+    # subprocess.check_call('localstack stop', shell=True)
+    STATE['process'].terminate()
+    time.sleep(2)

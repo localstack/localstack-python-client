@@ -7,17 +7,12 @@ if __name__ == '__main__':
     setup(
         name='localstack-client',
         version='0.1',
-        description='A lightweight python client for localstack mocking.',
-        author='Jeff Wu',
-        author_email='jeffrey.yung.wu@gmail.com',
-        url='https://bitbucket.org/atlassian/localstack',
-        custom_headers={
-            'Authorization': None
-        },
+        description='A lightweight python client for LocalStack.',
+        author='Jeff Wu, Waldemar Hummer',
+        author_email='jeffrey.yung.wu@gmail.com, waldemar.hummer@gmail.com',
+        url='https://bitbucket.org/localstack/localstack-python-client',
         packages=['localstack_client'],
-        # TODO: include a localstack config for services and ports here.
         package_data={},
-        # TODO: include the docker-compose.yml file here.
         data_files={},
         install_requires=["boto3"],
         license="Apache License 2.0",

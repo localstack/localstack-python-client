@@ -50,7 +50,8 @@ class Session():
     def resource(self, service_name, **kwargs):
         if service_name not in self._service_endpoint_mapping:
             raise Exception('%s is not supported by this mock session.' % (service_name))
-        return boto3.resource(service_name, endpoint_url=self._service_endpoint_mapping[service_name],
+        return boto3.resource(service_name,
+                              endpoint_url=self._service_endpoint_mapping[service_name],
                               region_name=self.region_name)
 
 
