@@ -24,9 +24,9 @@ This library provides an API that is equivalent to `boto3`. For example, to list
 in your local (LocalStack) environment, use the following code:
 
 ```
-from localstack_client import localstack_client
+import localstack_client.session
 
-session = localstack_client.Session()
+session = localstack_client.session.Session()
 sqs = session.client('sqs')
 assert sqs.list_queues() is not None
 ```
