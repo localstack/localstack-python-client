@@ -42,6 +42,11 @@ make install
 make test
 ```
 
+## Changelog
+
+* v0.2: Add missing service endpoints; enable SSL connections; put default endpoints into config.py
+* v0.1: Initial version
+
 ## License
 
 The LocalStack Python Client is released under the Apache License, Version 2.0 (see `LICENSE`).
