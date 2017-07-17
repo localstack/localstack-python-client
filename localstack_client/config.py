@@ -17,8 +17,17 @@ _service_endpoints_template = {
     'ses': '{proto}://{host}:4579',
     'route53': '{proto}://{host}:4580',
     'cloudformation': '{proto}://{host}:4581',
-    'cloudwatch': '{proto}://{host}:4582'
+    'cloudwatch': '{proto}://{host}:4582',
+    'cognito-idp': '{proto}://{host}:4590',
+    'cognito-identity': '{proto}://{host}:4591',
+    'sts': '{proto}://{host}:4592',
+    'iam': '{proto}://{host}:4593'
 }
+
+
+def get_service_endpoint(service, localstack_host=None):
+    endpoints = get_service_endpoints(localstack_host=localstack_host)
+    return endpoints.get(service)
 
 
 def get_service_endpoints(localstack_host=None):

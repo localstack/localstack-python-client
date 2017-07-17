@@ -6,9 +6,9 @@ from localstack_client import config
 DEFAULT_SESSION = None
 
 
-class Session():
+class Session(object):
     """
-    This is a custom localstack session used to
+    This is a custom LocalStack session used to
     emulate the boto3.session object.
     """
 

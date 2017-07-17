@@ -20,7 +20,7 @@ pip install localstack-client
 
 ## Usage
 
-This library provides an API that is equivalent to `boto3`. For example, to list the SQS queues
+This library provides an API that is identical to `boto3`'s. For example, to list the SQS queues
 in your local (LocalStack) environment, use the following code:
 
 ```
