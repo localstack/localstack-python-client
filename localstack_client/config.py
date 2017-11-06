@@ -21,7 +21,8 @@ _service_endpoints_template = {
     'cognito-idp': '{proto}://{host}:4590',
     'cognito-identity': '{proto}://{host}:4591',
     'sts': '{proto}://{host}:4592',
-    'iam': '{proto}://{host}:4593'
+    'iam': '{proto}://{host}:4593',
+    'kms': '{proto}://{host}:4594'
 }
 
 
