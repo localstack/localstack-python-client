@@ -1,5 +1,6 @@
 import os
 import json
+from six.moves.urllib.parse import urlparse
 
 _service_endpoints_template = {
     'apigateway': '{proto}://{host}:4567',
@@ -18,6 +19,7 @@ _service_endpoints_template = {
     'route53': '{proto}://{host}:4580',
     'cloudformation': '{proto}://{host}:4581',
     'cloudwatch': '{proto}://{host}:4582',
+    'ssm': '{proto}://{host}:4583',
     'cognito-idp': '{proto}://{host}:4590',
     'cognito-identity': '{proto}://{host}:4591',
     'sts': '{proto}://{host}:4592',
@@ -37,3 +39,16 @@ def get_service_endpoints(localstack_host=None):
 
     return json.loads(json.dumps(_service_endpoints_template)
         .replace('{proto}', protocol).replace('{host}', localstack_host))
+
+
+def get_service_port(service):
+    ports = get_service_ports()
+    return ports.get(service)
+
+
+def get_service_ports():
+    endpoints = get_service_endpoints()
+    result = {}
+    for service, url in endpoints.items():
+        result[service] = urlparse(url).port
+    return result
