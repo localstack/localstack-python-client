@@ -44,6 +44,9 @@ make test
 
 ## Changelog
 
+* v0.5: Fix passing of credentials to client session
+* v0.4: Add functions to retrieve service port mappings
+* v0.3: Add new service endpoints
 * v0.2: Add missing service endpoints; enable SSL connections; put default endpoints into config.py
 * v0.1: Initial version
 

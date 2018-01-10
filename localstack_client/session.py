@@ -35,6 +35,8 @@ class Session(object):
             raise Exception('%s is not supported by this mock session.' % (service_name))
 
         return boto3.client(service_name, endpoint_url=self._service_endpoint_mapping[service_name],
+                            aws_access_key_id=self.aws_access_key_id,
+                            aws_secret_access_key=self.aws_secret_access_key,
                             region_name=self.region_name, verify=False)
 
     def resource(self, service_name, **kwargs):
@@ -42,6 +44,8 @@ class Session(object):
             raise Exception('%s is not supported by this mock session.' % (service_name))
         return boto3.resource(service_name,
                               endpoint_url=self._service_endpoint_mapping[service_name],
+                              aws_access_key_id=self.aws_access_key_id,
+                              aws_secret_access_key=self.aws_secret_access_key,
                               region_name=self.region_name, verify=False)
 
 
