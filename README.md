@@ -1,13 +1,13 @@
 # LocalStack Python Client
 
-This is an easy-to-use Python client for [LocalStack](https://github.com/atlassian/localstack).
+This is an easy-to-use Python client for [LocalStack](https://github.com/localstack/localstack).
 The client library provides a thin wrapper around [boto3](https://github.com/boto/boto3) which
 automatically configures the target endpoints to use LocalStack for your local cloud
 application development.
 
 ## Prerequisites
 
-To make use of this library, you need to have [LocalStack](https://github.com/atlassian/localstack)
+To make use of this library, you need to have [LocalStack](https://github.com/localstack/localstack)
 installed on your local machine. In particular, the `localstack` command needs to be available.
 
 ## Installation
