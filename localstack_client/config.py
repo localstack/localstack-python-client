@@ -20,6 +20,7 @@ _service_endpoints_template = {
     'cloudformation': '{proto}://{host}:4581',
     'cloudwatch': '{proto}://{host}:4582',
     'ssm': '{proto}://{host}:4583',
+    'secretsmanager': '{proto}://{host}:4584',
     'cognito-idp': '{proto}://{host}:4590',
     'cognito-identity': '{proto}://{host}:4591',
     'sts': '{proto}://{host}:4592',
