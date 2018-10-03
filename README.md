@@ -44,6 +44,7 @@ make test
 
 ## Changelog
 
+* v0.6: Add endpoint for AWS secretsmanager
 * v0.5: Fix passing of credentials to client session
 * v0.4: Add functions to retrieve service port mappings
 * v0.3: Add new service endpoints
