@@ -22,10 +22,17 @@ _service_endpoints_template = {
     'ssm': '{proto}://{host}:4583',
     'secretsmanager': '{proto}://{host}:4584',
     'stepfunctions': '{proto}://{host}:4585',
+    'logs': '{proto}://{host}:4586',
+    'events': '{proto}://{host}:4587',
+    'elb': '{proto}://{host}:4588',
+    'iot': '{proto}://{host}:4589',
     'cognito-idp': '{proto}://{host}:4590',
     'cognito-identity': '{proto}://{host}:4591',
     'sts': '{proto}://{host}:4592',
-    'iam': '{proto}://{host}:4593'
+    'iam': '{proto}://{host}:4593',
+    'rds': '{proto}://{host}:4594',
+    'cloudsearch': '{proto}://{host}:4595',
+    'swf': '{proto}://{host}:4596'
 }
 
 
