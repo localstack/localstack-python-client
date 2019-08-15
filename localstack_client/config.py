@@ -33,7 +33,12 @@ _service_endpoints_template = {
     'rds': '{proto}://{host}:4594',
     'cloudsearch': '{proto}://{host}:4595',
     'swf': '{proto}://{host}:4596',
-    'ec2': '{proto}://{host}:4597'
+    'ec2': '{proto}://{host}:4597',
+    'elasticache': '{proto}://{host}:4598',
+    'kms': '{proto}://{host}:4599',
+    'emr': '{proto}://{host}:4600',
+    'ecs': '{proto}://{host}:4601',
+    'eks': '{proto}://{host}:4602'
 }
 
 
