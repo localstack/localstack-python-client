@@ -43,7 +43,11 @@ _service_endpoints_template = {
     'kms': '{proto}://{host}:4599',
     'emr': '{proto}://{host}:4600',
     'ecs': '{proto}://{host}:4601',
-    'eks': '{proto}://{host}:4602'
+    'eks': '{proto}://{host}:4602',
+    'xray': '{proto}://{host}:4603',
+    'elasticbeanstalk': '{proto}://{host}:4604',
+    'appsync': '{proto}://{host}:4605',
+    'cloudsearch': '{proto}://{host}:4606'
 }
 
 
