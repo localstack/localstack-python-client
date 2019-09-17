@@ -46,8 +46,7 @@ _service_endpoints_template = {
     'eks': '{proto}://{host}:4602',
     'xray': '{proto}://{host}:4603',
     'elasticbeanstalk': '{proto}://{host}:4604',
-    'appsync': '{proto}://{host}:4605',
-    'cloudsearch': '{proto}://{host}:4606'
+    'appsync': '{proto}://{host}:4605'
 }
 
 
