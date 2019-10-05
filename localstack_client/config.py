@@ -3,6 +3,7 @@ import json
 from six.moves.urllib.parse import urlparse
 
 _service_endpoints_template = {
+    'dashboard': '{proto}://{host}:8080',
     'apigateway': '{proto}://{host}:4567',
     'kinesis': '{proto}://{host}:4568',
     'dynamodb': '{proto}://{host}:4569',
@@ -46,7 +47,8 @@ _service_endpoints_template = {
     'eks': '{proto}://{host}:4602',
     'xray': '{proto}://{host}:4603',
     'elasticbeanstalk': '{proto}://{host}:4604',
-    'appsync': '{proto}://{host}:4605'
+    'appsync': '{proto}://{host}:4605',
+    'cloudfront': '{proto}://{host}:4606'
 }
 
 

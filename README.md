@@ -44,6 +44,7 @@ make test
 
 ## Changelog
 
+* v0.13: Add endpoint for AWS CloudFront
 * v0.8: Add more service endpoint mappings that will be implemented in the near future
 * v0.7: Add endpoint for AWS Step Functions
 * v0.6: Add endpoint for AWS Secrets Manager
