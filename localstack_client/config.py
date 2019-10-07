@@ -48,7 +48,8 @@ _service_endpoints_template = {
     'xray': '{proto}://{host}:4603',
     'elasticbeanstalk': '{proto}://{host}:4604',
     'appsync': '{proto}://{host}:4605',
-    'cloudfront': '{proto}://{host}:4606'
+    'cloudfront': '{proto}://{host}:4606',
+    'athena': '{proto}://{host}:4607'
 }
 
 
