@@ -49,7 +49,8 @@ _service_endpoints_template = {
     'elasticbeanstalk': '{proto}://{host}:4604',
     'appsync': '{proto}://{host}:4605',
     'cloudfront': '{proto}://{host}:4606',
-    'athena': '{proto}://{host}:4607'
+    'athena': '{proto}://{host}:4607',
+    'glue': '{proto}://{host}:4608'
 }
 
 
