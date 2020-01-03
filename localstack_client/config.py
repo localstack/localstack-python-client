@@ -50,7 +50,8 @@ _service_endpoints_template = {
     'appsync': '{proto}://{host}:4605',
     'cloudfront': '{proto}://{host}:4606',
     'athena': '{proto}://{host}:4607',
-    'glue': '{proto}://{host}:4608'
+    'glue': '{proto}://{host}:4608',
+    'sagemaker': '{proto}://{host}:4609'
 }
 
 

@@ -44,6 +44,7 @@ make test
 
 ## Changelog
 
+* v0.16: Add endpoint for AWS SageMaker
 * v0.15: Add endpoint for AWS Glue
 * v0.14: Add endpoint for AWS Athena
 * v0.13: Add endpoint for AWS CloudFront
