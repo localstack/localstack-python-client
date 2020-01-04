@@ -51,7 +51,8 @@ _service_endpoints_template = {
     'cloudfront': '{proto}://{host}:4606',
     'athena': '{proto}://{host}:4607',
     'glue': '{proto}://{host}:4608',
-    'sagemaker': '{proto}://{host}:4609'
+    'sagemaker': '{proto}://{host}:4609',
+    'sagemaker-runtime': '{proto}://{host}:4609'
 }
 
 
