@@ -5,6 +5,7 @@ from six.moves.urllib.parse import urlparse
 _service_endpoints_template = {
     'dashboard': '{proto}://{host}:8080',
     'apigateway': '{proto}://{host}:4567',
+    'apigatewayv2': '{proto}://{host}:4567',
     'kinesis': '{proto}://{host}:4568',
     'dynamodb': '{proto}://{host}:4569',
     'dynamodbstreams': '{proto}://{host}:4570',
