@@ -44,6 +44,7 @@ make test
 
 ## Changelog
 
+* v0.19: Add endpoints for AWS ECR and QLDB
 * v0.18: Add endpoint for AWS API Gateway V2
 * v0.16: Add endpoint for AWS SageMaker
 * v0.15: Add endpoint for AWS Glue

@@ -53,7 +53,9 @@ _service_endpoints_template = {
     'athena': '{proto}://{host}:4607',
     'glue': '{proto}://{host}:4608',
     'sagemaker': '{proto}://{host}:4609',
-    'sagemaker-runtime': '{proto}://{host}:4609'
+    'sagemaker-runtime': '{proto}://{host}:4609',
+    'ecr': '{proto}://{host}:4610',
+    'qldb': '{proto}://{host}:4611'
 }
 
 
