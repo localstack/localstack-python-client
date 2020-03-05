@@ -55,7 +55,11 @@ _service_endpoints_template = {
     'sagemaker': '{proto}://{host}:4609',
     'sagemaker-runtime': '{proto}://{host}:4609',
     'ecr': '{proto}://{host}:4610',
-    'qldb': '{proto}://{host}:4611'
+    'qldb': '{proto}://{host}:4611',
+    'cloudtrail': '{proto}://{host}:4612',
+    'glacier': '{proto}://{host}:4613',
+    'batch': '{proto}://{host}:4614',
+    'organizations': '{proto}://{host}:4615'
 }
 
 
