@@ -38,6 +38,7 @@ _service_endpoints_template = {
     'sts': '{proto}://{host}:4592',
     'iam': '{proto}://{host}:4593',
     'rds': '{proto}://{host}:4594',
+    'rds-data': '{proto}://{host}:4594',
     'cloudsearch': '{proto}://{host}:4595',
     'swf': '{proto}://{host}:4596',
     'ec2': '{proto}://{host}:4597',
