@@ -1,7 +1,7 @@
 import os
-from boto3 import session as session_
-from boto3 import client as client_
-from boto3 import resource as resource_
+from boto3 import session as boto3_session
+from boto3 import client as boto3_client
+from boto3 import resource as boto3_resource
 from botocore.credentials import Credentials
 from localstack_client import config
 
@@ -36,19 +36,20 @@ class Session(object):
         if service_name not in self._service_endpoint_mapping:
             raise Exception('%s is not supported by this mock session.' % (service_name))
 
-        return client_(service_name, endpoint_url=self._service_endpoint_mapping[service_name],
-                       aws_access_key_id=self.aws_access_key_id,
-                       aws_secret_access_key=self.aws_secret_access_key,
-                       region_name=self.region_name, verify=False)
+        return boto3_client(service_name,
+            endpoint_url=self._service_endpoint_mapping[service_name],
+            aws_access_key_id=self.aws_access_key_id, region_name=self.region_name,
+            aws_secret_access_key=self.aws_secret_access_key, verify=False)
 
     def resource(self, service_name, **kwargs):
         if service_name not in self._service_endpoint_mapping:
             raise Exception('%s is not supported by this mock session.' % (service_name))
-        return resource_(service_name,
-                         endpoint_url=self._service_endpoint_mapping[service_name],
-                         aws_access_key_id=self.aws_access_key_id,
-                         aws_secret_access_key=self.aws_secret_access_key,
-                         region_name=self.region_name, verify=False)
+
+        return boto3_resource(service_name,
+            endpoint_url=self._service_endpoint_mapping[service_name],
+            aws_access_key_id=self.aws_access_key_id,
+            aws_secret_access_key=self.aws_secret_access_key,
+            region_name=self.region_name, verify=False)
 
 
 def _get_default_session():

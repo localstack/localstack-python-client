@@ -1,5 +1,5 @@
 import time
-import subprocess32 as subprocess
+import subprocess
 
 STATE = {}
 
