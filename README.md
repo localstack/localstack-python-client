@@ -64,6 +64,7 @@ make test
 
 ## Changelog
 
+* v0.23: Add endpoints for AWS Autoscaling and MediaStore
 * v0.22: Import boto3 under different name to simplify mocking
 * v0.20: Add endpoints for AWS CloudTrail, Glacier, Batch, Organizations
 * v0.19: Add endpoints for AWS ECR and QLDB

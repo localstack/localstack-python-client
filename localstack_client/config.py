@@ -60,7 +60,10 @@ _service_endpoints_template = {
     'cloudtrail': '{proto}://{host}:4612',
     'glacier': '{proto}://{host}:4613',
     'batch': '{proto}://{host}:4614',
-    'organizations': '{proto}://{host}:4615'
+    'organizations': '{proto}://{host}:4615',
+    'autoscaling': '{proto}://{host}:4616',
+    'mediastore': '{proto}://{host}:4617',
+    'mediastore-data': '{proto}://{host}:4617'
 }
 
 
