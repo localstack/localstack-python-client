@@ -63,7 +63,10 @@ _service_endpoints_template = {
     'organizations': '{proto}://{host}:4615',
     'autoscaling': '{proto}://{host}:4616',
     'mediastore': '{proto}://{host}:4617',
-    'mediastore-data': '{proto}://{host}:4617'
+    'mediastore-data': '{proto}://{host}:4617',
+    'transfer': '{proto}://{host}:4618',
+    'acm': '{proto}://{host}:4619',
+    'codecommit': '{proto}://{host}:4620'
 }
 
 

@@ -1,5 +1,3 @@
-import os
-from boto3 import session as boto3_session
 from boto3 import client as boto3_client
 from boto3 import resource as boto3_resource
 from botocore.credentials import Credentials
