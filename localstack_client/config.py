@@ -2,6 +2,8 @@ import os
 import json
 from six.moves.urllib.parse import urlparse
 
+# NOTE: The endpoints below will soon become deprecated/removed, as the default in the
+# latest version is to access all services via a single "edge service" (port 4566)
 _service_endpoints_template = {
     'dashboard': '{proto}://{host}:8080',
     'apigateway': '{proto}://{host}:4567',
