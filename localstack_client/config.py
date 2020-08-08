@@ -69,8 +69,15 @@ _service_endpoints_template = {
     'mediastore-data': '{proto}://{host}:4617',
     'transfer': '{proto}://{host}:4618',
     'acm': '{proto}://{host}:4619',
-    'codecommit': '{proto}://{host}:4620'
+    'codecommit': '{proto}://{host}:4620',
+    'kinesisanalytics': '{proto}://{host}:4621'
 }
+
+# TODO remove service port mapping above entirely
+if False:
+    for key, value in _service_endpoints_template.items():
+        if key != 'dashboard':
+            _service_endpoints_template[key] = '%s:4566' % value.rpartition(':')[0]
 
 
 def get_service_endpoint(service, localstack_host=None):

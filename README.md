@@ -64,6 +64,7 @@ make test
 
 ## Changelog
 
+* v0.25: Add endpoint for AWS Kinesis Analytics; prepare for replacing service ports with edge port
 * v0.24: Add endpoints for AWS Transfer, ACM, and CodeCommit
 * v0.23: Add endpoints for AWS Autoscaling and MediaStore
 * v0.22: Import boto3 under different name to simplify mocking
