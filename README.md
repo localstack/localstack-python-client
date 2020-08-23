@@ -64,6 +64,7 @@ make test
 
 ## Changelog
 
+* v1.0: Switch to using edge port for all service endpoints by default
 * v0.25: Add endpoint for AWS Kinesis Analytics; prepare for replacing service ports with edge port
 * v0.24: Add endpoints for AWS Transfer, ACM, and CodeCommit
 * v0.23: Add endpoints for AWS Autoscaling and MediaStore

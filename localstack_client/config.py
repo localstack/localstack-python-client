@@ -2,8 +2,11 @@ import os
 import json
 from six.moves.urllib.parse import urlparse
 
+# central entrypoint port for all LocalStack API endpoints
+EDGE_PORT = int(os.environ.get('EDGE_PORT') or 4566)
+
 # NOTE: The endpoints below will soon become deprecated/removed, as the default in the
-# latest version is to access all services via a single "edge service" (port 4566)
+# latest version is to access all services via a single "edge service" (port 4566 by default)
 _service_endpoints_template = {
     'dashboard': '{proto}://{host}:8080',
     'edge': '{proto}://{host}:4566',
@@ -74,10 +77,10 @@ _service_endpoints_template = {
 }
 
 # TODO remove service port mapping above entirely
-if False:
+if os.environ.get('USE_LEGACY_PORTS') not in ['1', 'true']:
     for key, value in _service_endpoints_template.items():
         if key != 'dashboard':
-            _service_endpoints_template[key] = '%s:4566' % value.rpartition(':')[0]
+            _service_endpoints_template[key] = '%s:%s' % (value.rpartition(':')[0], EDGE_PORT)
 
 
 def get_service_endpoint(service, localstack_host=None):
