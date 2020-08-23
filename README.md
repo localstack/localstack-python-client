@@ -64,6 +64,7 @@ make test
 
 ## Changelog
 
+* v1.1: Add USE_LEGACY_PORTS config to disable using legacy ports
 * v1.0: Switch to using edge port for all service endpoints by default
 * v0.25: Add endpoint for AWS Kinesis Analytics; prepare for replacing service ports with edge port
 * v0.24: Add endpoints for AWS Transfer, ACM, and CodeCommit
