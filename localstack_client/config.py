@@ -73,7 +73,8 @@ _service_endpoints_template = {
     'transfer': '{proto}://{host}:4618',
     'acm': '{proto}://{host}:4619',
     'codecommit': '{proto}://{host}:4620',
-    'kinesisanalytics': '{proto}://{host}:4621'
+    'kinesisanalytics': '{proto}://{host}:4621',
+    'amplify': '{proto}://{host}:4622'
 }
 
 # TODO remove service port mapping above entirely
