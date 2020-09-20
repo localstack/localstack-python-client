@@ -78,9 +78,9 @@ _service_endpoints_template = {
 }
 
 # TODO remove service port mapping above entirely
-if os.environ.get('USE_LEGACY_PORTS') in ['0', 'false']:
+if os.environ.get('USE_LEGACY_PORTS') not in ['1', 'true']:
     for key, value in _service_endpoints_template.items():
-        if key != 'dashboard':
+        if key not in ['dashboard', 'elasticsearch']:
             _service_endpoints_template[key] = '%s:%s' % (value.rpartition(':')[0], EDGE_PORT)
 
 
