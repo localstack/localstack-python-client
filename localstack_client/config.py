@@ -74,7 +74,9 @@ _service_endpoints_template = {
     'acm': '{proto}://{host}:4619',
     'codecommit': '{proto}://{host}:4620',
     'kinesisanalytics': '{proto}://{host}:4621',
-    'amplify': '{proto}://{host}:4622'
+    'amplify': '{proto}://{host}:4622',
+    'application-autoscaling': '{proto}://{host}:4623',
+    'kafka': '{proto}://{host}:4624'
 }
 
 # TODO remove service port mapping above entirely

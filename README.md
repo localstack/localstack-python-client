@@ -64,6 +64,7 @@ make test
 
 ## Changelog
 
+* v1.5: Add endpoint for AWS Application Autoscaling, Kafka (MSK)
 * v1.4: Configure USE_LEGACY_PORTS=0 by default to accommodate upstream changes
 * v1.2: Add endpoint for AWS Amplify
 * v1.1: Add USE_LEGACY_PORTS config to disable using legacy ports
