@@ -22,6 +22,7 @@ _service_endpoints_template = {
     'sns': '{proto}://{host}:4575',
     'sqs': '{proto}://{host}:4576',
     'redshift': '{proto}://{host}:4577',
+    'redshift-data': '{proto}://{host}:4577',
     'es': '{proto}://{host}:4578',
     'ses': '{proto}://{host}:4579',
     'route53': '{proto}://{host}:4580',
@@ -76,7 +77,11 @@ _service_endpoints_template = {
     'kinesisanalytics': '{proto}://{host}:4621',
     'amplify': '{proto}://{host}:4622',
     'application-autoscaling': '{proto}://{host}:4623',
-    'kafka': '{proto}://{host}:4624'
+    'kafka': '{proto}://{host}:4624',
+    'apigatewaymanagementapi': '{proto}://{host}:4625',
+    'timestream-query': '{proto}://{host}:4626',
+    'timestream-write': '{proto}://{host}:4626',
+    's3control': '{proto}://{host}:4627',
 }
 
 # TODO remove service port mapping above entirely

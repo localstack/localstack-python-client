@@ -64,6 +64,7 @@ make test
 
 ## Changelog
 
+* v1.7: Add endpoints for AWS API GW Management, Timestream, S3 Control, and others
 * v1.5: Add endpoint for AWS Application Autoscaling, Kafka (MSK)
 * v1.4: Configure USE_LEGACY_PORTS=0 by default to accommodate upstream changes
 * v1.2: Add endpoint for AWS Amplify
