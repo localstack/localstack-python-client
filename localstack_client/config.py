@@ -79,6 +79,7 @@ _service_endpoints_template = {
     'application-autoscaling': '{proto}://{host}:4623',
     'kafka': '{proto}://{host}:4624',
     'apigatewaymanagementapi': '{proto}://{host}:4625',
+    'timestream': '{proto}://{host}:4626',
     'timestream-query': '{proto}://{host}:4626',
     'timestream-write': '{proto}://{host}:4626',
     's3control': '{proto}://{host}:4627',
