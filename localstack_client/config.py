@@ -83,6 +83,7 @@ _service_endpoints_template = {
     'timestream-query': '{proto}://{host}:4626',
     'timestream-write': '{proto}://{host}:4626',
     's3control': '{proto}://{host}:4627',
+    'elbv2': '{proto}://{host}:4628',
 }
 
 # TODO remove service port mapping above entirely
