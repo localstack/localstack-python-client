@@ -22,6 +22,13 @@ class Session(object):
         self.region_name = region_name
         self._service_endpoint_mapping = config.get_service_endpoints(localstack_host)
 
+        self.common_protected_kwargs = {
+            'aws_access_key_id': self.aws_access_key_id,
+            'aws_secret_access_key': self.aws_secret_access_key,
+            'region_name': self.region_name,
+            'verify': False
+        }
+
     def get_credentials(self):
         """
         Returns botocore.credential.Credential object.
@@ -31,23 +38,38 @@ class Session(object):
                            token=self.aws_session_token)
 
     def client(self, service_name, **kwargs):
+        """
+        Mock boto3 client
+        If **kwargs are provided they will passed through to boto3.client unless they are contained already
+        within protected_kwargs which are set with priority
+        Returns boto3.resources.factory.s3.ServiceClient object
+        """
         if service_name not in self._service_endpoint_mapping:
             raise Exception('%s is not supported by this mock session.' % (service_name))
 
-        return boto3_client(service_name,
-            endpoint_url=self._service_endpoint_mapping[service_name],
-            aws_access_key_id=self.aws_access_key_id, region_name=self.region_name,
-            aws_secret_access_key=self.aws_secret_access_key, verify=False)
+        protected_kwargs = {**self.common_protected_kwargs,
+                            'service_name': service_name,
+                            'endpoint_url': self._service_endpoint_mapping[service_name]
+                            }
+
+        return boto3_client(**{**kwargs, **protected_kwargs})
 
     def resource(self, service_name, **kwargs):
+        """
+        Mock boto3 resource
+        If **kwargs are provided they will passed through to boto3.client unless they are contained already
+        within overwrite_kwargs which are set with priority
+        Returns boto3.resources.factory.s3.ServiceResource object
+        """
         if service_name not in self._service_endpoint_mapping:
             raise Exception('%s is not supported by this mock session.' % (service_name))
 
-        return boto3_resource(service_name,
-            endpoint_url=self._service_endpoint_mapping[service_name],
-            aws_access_key_id=self.aws_access_key_id,
-            aws_secret_access_key=self.aws_secret_access_key,
-            region_name=self.region_name, verify=False)
+        protected_kwargs = {**self.common_protected_kwargs,
+                            'service_name': service_name,
+                            'endpoint_url': self._service_endpoint_mapping[service_name]
+                            }
+
+        return boto3_resource(**{**kwargs, **protected_kwargs})
 
 
 def _get_default_session():
