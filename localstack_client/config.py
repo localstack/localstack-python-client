@@ -38,6 +38,7 @@ _service_endpoints_template = {
     'iotanalytics': '{proto}://{host}:4589',
     'iotevents': '{proto}://{host}:4589',
     'iotevents-data': '{proto}://{host}:4589',
+    'iotwireless': '{proto}://{host}:4589',
     'iot-data': '{proto}://{host}:4589',
     'iot-jobs-data': '{proto}://{host}:4589',
     'cognito-idp': '{proto}://{host}:4590',

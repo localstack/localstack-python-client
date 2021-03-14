@@ -64,6 +64,7 @@ make test
 
 ## Changelog
 
+* v1.14: Add endpoint for IoT Wireless
 * v1.13: Add endpoints for NeptuneDB and DocumentDB
 * v1.10: Add endpoint for ELBv2
 * v1.7: Add endpoints for AWS API GW Management, Timestream, S3 Control, and others
