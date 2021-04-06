@@ -85,6 +85,7 @@ _service_endpoints_template = {
     'timestream-write': '{proto}://{host}:4626',
     's3control': '{proto}://{host}:4627',
     'elbv2': '{proto}://{host}:4628',
+    'support': '{proto}://{host}:4629',
     'neptune': '{proto}://{host}:4594',
     'docdb': '{proto}://{host}:4594',
 }
