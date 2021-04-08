@@ -20,7 +20,17 @@ pip install localstack-client
 
 ## Usage
 
-This library provides an API that is identical to `boto3`'s. For example, to list the SQS queues
+This library provides an API that is identical to `boto3`'s. A minimal way to try it out is to replace
+`import boto3` with `import localstack_client.session as boto3`. This will allow your boto3 calls to work as normal.
+For example, to list all s3 buckets in localstack:
+
+```
+import localstack_client.session as boto3
+client = boto3.client('s3')
+response = client.list_buckets()
+```
+
+Another example below shows using `localstack_client` directly. To list the SQS queues
 in your local (LocalStack) environment, use the following code:
 
 ```
