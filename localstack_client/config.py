@@ -88,6 +88,7 @@ _service_endpoints_template = {
     'support': '{proto}://{host}:4629',
     'neptune': '{proto}://{host}:4594',
     'docdb': '{proto}://{host}:4594',
+    'servicediscovery': '{proto}://{host}:4630',
 }
 
 # TODO remove service port mapping above entirely
