@@ -90,6 +90,9 @@ _service_endpoints_template = {
     'docdb': '{proto}://{host}:4594',
     'servicediscovery': '{proto}://{host}:4630',
     'serverlessrepo': '{proto}://{host}:4631',
+    'appconfig': '{proto}://{host}:4632',
+    'ce': '{proto}://{host}:4633',
+    'mediaconvert': '{proto}://{host}:4634'
 }
 
 # TODO remove service port mapping above entirely

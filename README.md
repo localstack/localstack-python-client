@@ -74,6 +74,7 @@ make test
 
 ## Changelog
 
+* v1.18: Add endpoints for AppConfig, CostExplorer, MediaConvert
 * v1.17: Add endpoint for ServerlessApplicationRepository
 * v1.16: Add endpoints for AWS Support and ServiceDiscovery (CloudMap)
 * v1.14: Add endpoint for IoT Wireless
