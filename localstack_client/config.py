@@ -92,7 +92,8 @@ _service_endpoints_template = {
     'serverlessrepo': '{proto}://{host}:4631',
     'appconfig': '{proto}://{host}:4632',
     'ce': '{proto}://{host}:4633',
-    'mediaconvert': '{proto}://{host}:4634'
+    'mediaconvert': '{proto}://{host}:4634',
+    'resourcegroupstaggingapi':'{proto}://{host}:4635'
 }
 
 # TODO remove service port mapping above entirely
