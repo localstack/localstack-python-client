@@ -74,8 +74,8 @@ make test
 
 ## Changelog
 
-* v1.20: Add endpoints for resourcegroups
-* v1.19: Add endpoints for resourcegroupstaggingapi
+* v1.20: Add endpoints for Resource Groups API
+* v1.19: Add endpoints for Resource Groups Tagging API
 * v1.18: Add endpoints for AppConfig, CostExplorer, MediaConvert
 * v1.17: Add endpoint for ServerlessApplicationRepository
 * v1.16: Add endpoints for AWS Support and ServiceDiscovery (CloudMap)
