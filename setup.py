@@ -6,7 +6,7 @@ if __name__ == '__main__':
 
     setup(
         name='localstack-client',
-        version='1.20',
+        version='1.21',
         description='A lightweight Python client for LocalStack.',
         author='Waldemar Hummer',
         author_email='waldemar.hummer@gmail.com',
@@ -26,6 +26,7 @@ if __name__ == '__main__':
             'Programming Language :: Python :: 3.6',
             'Programming Language :: Python :: 3.7',
             'Programming Language :: Python :: 3.8',
+            'Programming Language :: Python :: 3.9',
             "License :: OSI Approved :: Apache Software License",
             "Topic :: Software Development :: Testing",
         ]

@@ -74,7 +74,8 @@ make test
 
 ## Changelog
 
-* v1.20: Add endpoints for Resource Groups API
+* v1.21: Add endpoint for AWS Backup API
+* v1.20: Add endpoint for Resource Groups API
 * v1.19: Add endpoints for Resource Groups Tagging API
 * v1.18: Add endpoints for AppConfig, CostExplorer, MediaConvert
 * v1.17: Add endpoint for ServerlessApplicationRepository

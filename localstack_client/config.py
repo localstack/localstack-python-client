@@ -94,7 +94,9 @@ _service_endpoints_template = {
     'ce': '{proto}://{host}:4633',
     'mediaconvert': '{proto}://{host}:4634',
     'resourcegroupstaggingapi':'{proto}://{host}:4635',
-    'resource-groups': '{proto}://{host}:4636'
+    'resource-groups': '{proto}://{host}:4636',
+    'efs': '{proto}://{host}:4637',
+    'backup': '{proto}://{host}:4638'
 }
 
 # TODO remove service port mapping above entirely
