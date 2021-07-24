@@ -93,10 +93,13 @@ _service_endpoints_template = {
     'appconfig': '{proto}://{host}:4632',
     'ce': '{proto}://{host}:4633',
     'mediaconvert': '{proto}://{host}:4634',
-    'resourcegroupstaggingapi':'{proto}://{host}:4635',
+    'resourcegroupstaggingapi': '{proto}://{host}:4635',
     'resource-groups': '{proto}://{host}:4636',
     'efs': '{proto}://{host}:4637',
-    'backup': '{proto}://{host}:4638'
+    'backup': '{proto}://{host}:4638',
+    'lakeformation': '{proto}://{host}:4639',
+    'waf': '{proto}://{host}:4640',
+    'wafv2': '{proto}://{host}:4640',
 }
 
 # TODO remove service port mapping above entirely

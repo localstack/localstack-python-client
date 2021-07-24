@@ -6,7 +6,7 @@ if __name__ == '__main__':
 
     setup(
         name='localstack-client',
-        version='1.21',
+        version='1.22',
         description='A lightweight Python client for LocalStack.',
         author='Waldemar Hummer',
         author_email='waldemar.hummer@gmail.com',

@@ -40,7 +40,7 @@ class Session(object):
     def client(self, service_name, **kwargs):
         """
         Mock boto3 client
-        If **kwargs are provided they will passed through to boto3.client unless they are contained already
+        If **kwargs are provided they will passed through to boto3.client unless already contained
         within protected_kwargs which are set with priority
         Returns boto3.resources.factory.s3.ServiceClient object
         """
@@ -57,7 +57,7 @@ class Session(object):
     def resource(self, service_name, **kwargs):
         """
         Mock boto3 resource
-        If **kwargs are provided they will passed through to boto3.client unless they are contained already
+        If **kwargs are provided they will passed through to boto3.client unless already contained
         within overwrite_kwargs which are set with priority
         Returns boto3.resources.factory.s3.ServiceResource object
         """

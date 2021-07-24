@@ -74,6 +74,7 @@ make test
 
 ## Changelog
 
+* v1.22: Add endpoints for LakeFormation and WAF/WAFv2
 * v1.21: Add endpoint for AWS Backup API
 * v1.20: Add endpoint for Resource Groups API
 * v1.19: Add endpoints for Resource Groups Tagging API
