@@ -82,8 +82,12 @@ def _get_default_session():
 
 
 def client(*args, **kwargs):
+    if kwargs:
+        return Session(**kwargs).client(*args, **kwargs)
     return _get_default_session().client(*args, **kwargs)
 
 
 def resource(*args, **kwargs):
+    if kwargs:
+        return Session(**kwargs).resource(*args, **kwargs)
     return _get_default_session().resource(*args, **kwargs)
