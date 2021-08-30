@@ -74,6 +74,8 @@ make test
 
 ## Changelog
 
+* v1.24: Add endpoints for Config Service
+* v1.23: Add endpoints for QLDB Session
 * v1.22: Add endpoints for LakeFormation and WAF/WAFv2
 * v1.21: Add endpoint for AWS Backup API
 * v1.20: Add endpoint for Resource Groups API
