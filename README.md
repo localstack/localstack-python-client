@@ -74,6 +74,7 @@ make test
 
 ## Changelog
 
+* v1.25: Remove mapping for deprecated/disabled Web UI on port 8080
 * v1.24: Add endpoints for Config Service
 * v1.23: Add endpoints for QLDB Session
 * v1.22: Add endpoints for LakeFormation and WAF/WAFv2

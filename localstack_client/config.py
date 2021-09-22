@@ -8,7 +8,6 @@ EDGE_PORT = int(os.environ.get('EDGE_PORT') or 4566)
 # NOTE: The endpoints below will soon become deprecated/removed, as the default in the
 # latest version is to access all services via a single "edge service" (port 4566 by default)
 _service_endpoints_template = {
-    'dashboard': '{proto}://{host}:8080',
     'edge': '{proto}://{host}:4566',
     'apigateway': '{proto}://{host}:4567',
     'apigatewayv2': '{proto}://{host}:4567',
