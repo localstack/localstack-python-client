@@ -101,6 +101,7 @@ _service_endpoints_template = {
     'waf': '{proto}://{host}:4640',
     'wafv2': '{proto}://{host}:4640',
     'config': '{proto}://{host}:4641',
+    'configservice': '{proto}://{host}:4641',
 }
 
 # TODO remove service port mapping above entirely
