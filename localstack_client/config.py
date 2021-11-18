@@ -24,6 +24,7 @@ _service_endpoints_template = {
     'redshift-data': '{proto}://{host}:4577',
     'es': '{proto}://{host}:4578',
     'ses': '{proto}://{host}:4579',
+    'sesv2': '{proto}://{host}:4579',
     'route53': '{proto}://{host}:4580',
     'cloudformation': '{proto}://{host}:4581',
     'cloudwatch': '{proto}://{host}:4582',
