@@ -74,6 +74,7 @@ make test
 
 ## Changelog
 
+* v1.28: Add endpoint for Route53Resolver
 * v1.27: Add endpoint for SESv2
 * v1.25: Remove mapping for deprecated/disabled Web UI on port 8080
 * v1.24: Add endpoints for Config Service
