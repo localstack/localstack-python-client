@@ -15,6 +15,7 @@ _service_endpoints_template = {
     'dynamodb': '{proto}://{host}:4569',
     'dynamodbstreams': '{proto}://{host}:4570',
     'elasticsearch': '{proto}://{host}:4571',
+    'opensearch': '{proto}://{host}:4571',
     's3': '{proto}://{host}:4572',
     'firehose': '{proto}://{host}:4573',
     'lambda': '{proto}://{host}:4574',

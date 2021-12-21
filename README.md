@@ -74,6 +74,7 @@ make test
 
 ## Changelog
 
+* v1.29: Add endpoint for OpenSearch
 * v1.28: Add endpoint for Route53Resolver
 * v1.27: Add endpoint for SESv2
 * v1.25: Remove mapping for deprecated/disabled Web UI on port 8080
