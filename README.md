@@ -66,16 +66,9 @@ sqs = boto3.client('sqs')
 assert sqs.list_queues() is not None  # list SQS in localstack
 ```
 
-## Developing
+## Contributing
 
-We welcome feedback, bug reports, and pull requests!
-
-Use these commands to get you started and test your code:
-
-```
-make install
-make test
-```
+If you are interested in contributing to LocalStack Python Client, start by reading our [`CONTRIBUTING.md`](CONTRIBUTING.md) guide. You can further navigate our codebase and [open issues](https://github.com/localstack/localstack-python-client/issues). We are thankful for all the contributions and feedback we receive.
 
 ## Changelog
 
