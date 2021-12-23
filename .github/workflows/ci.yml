@@ -43,4 +43,5 @@ jobs:
 
       - name: Lint
         run: |
+          pip install pycodestyle
           make lint
