@@ -1,5 +1,12 @@
 # LocalStack Python Client
 
+<p align="center">
+    <a href="https://img.shields.io/pypi/v/localstack-client"><img src="https://img.shields.io/pypi/v/localstack-client" alt="PyPI version" height="18"></a>
+    <img src="https://img.shields.io/badge/license-Apache License 2.0-brightgreen" alt="license Apache 2.0"/>
+    <img src="https://github.com/localstack/localstack-python-client/actions/workflows/ci.yml/badge.svg" alt="GitHub-Actions-Build"/>
+    <a href="https://pepy.tech/project/localstack-client"><img src="https://pepy.tech/badge/localstack-client" alt="PyPi downloads" height="18"></a>
+</p>
+
 This is an easy-to-use Python client for [LocalStack](https://github.com/localstack/localstack).
 The client library provides a thin wrapper around [boto3](https://github.com/boto/boto3) which
 automatically configures the target endpoints to use LocalStack for your local cloud
@@ -7,8 +14,7 @@ application development.
 
 ## Prerequisites
 
-To make use of this library, you need to have [LocalStack](https://github.com/localstack/localstack)
-installed on your local machine. In particular, the `localstack` command needs to be available.
+To make use of this library, you need to have [LocalStack](https://github.com/localstack/localstack) installed on your local machine. In particular, the `localstack` command needs to be available.
 
 ## Installation
 
@@ -20,11 +26,11 @@ pip install localstack-client
 
 ## Usage
 
-This library provides an API that is identical to `boto3`'s. A minimal way to try it out is to replace
-`import boto3` with `import localstack_client.session as boto3`. This will allow your boto3 calls to work as normal.
+This library provides an API that is identical to `boto3`'s. A minimal way to try it out is to replace `import boto3` with `import localstack_client.session as boto3`. This will allow your boto3 calls to work as normal.
+
 For example, to list all s3 buckets in localstack:
 
-```
+```python
 import localstack_client.session as boto3
 client = boto3.client('s3')
 response = client.list_buckets()
@@ -33,7 +39,7 @@ response = client.list_buckets()
 Another example below shows using `localstack_client` directly. To list the SQS queues
 in your local (LocalStack) environment, use the following code:
 
-```
+```python
 import localstack_client.session
 
 session = localstack_client.session.Session()
@@ -43,7 +49,7 @@ assert sqs.list_queues() is not None
 
 If you use `boto3.client` directly in your code, you can mock it.
 
-```
+```python
 import localstack_client.session
 import pytest
 
@@ -55,11 +61,10 @@ def boto3_localstack_patch(monkeypatch):
     monkeypatch.setattr(boto3, "resource", session_ls.resource)
 ```
 
-```
+```python
 sqs = boto3.client('sqs')
 assert sqs.list_queues() is not None  # list SQS in localstack
 ```
-
 
 ## Developing
 
@@ -74,47 +79,7 @@ make test
 
 ## Changelog
 
-* v1.29: Add endpoint for OpenSearch
-* v1.28: Add endpoint for Route53Resolver
-* v1.27: Add endpoint for SESv2
-* v1.25: Remove mapping for deprecated/disabled Web UI on port 8080
-* v1.24: Add endpoints for Config Service
-* v1.23: Add endpoints for QLDB Session
-* v1.22: Add endpoints for LakeFormation and WAF/WAFv2
-* v1.21: Add endpoint for AWS Backup API
-* v1.20: Add endpoint for Resource Groups API
-* v1.19: Add endpoints for Resource Groups Tagging API
-* v1.18: Add endpoints for AppConfig, CostExplorer, MediaConvert
-* v1.17: Add endpoint for ServerlessApplicationRepository
-* v1.16: Add endpoints for AWS Support and ServiceDiscovery (CloudMap)
-* v1.14: Add endpoint for IoT Wireless
-* v1.13: Add endpoints for NeptuneDB and DocumentDB
-* v1.10: Add endpoint for ELBv2
-* v1.7: Add endpoints for AWS API GW Management, Timestream, S3 Control, and others
-* v1.5: Add endpoint for AWS Application Autoscaling, Kafka (MSK)
-* v1.4: Configure USE_LEGACY_PORTS=0 by default to accommodate upstream changes
-* v1.2: Add endpoint for AWS Amplify
-* v1.1: Add USE_LEGACY_PORTS config to disable using legacy ports
-* v1.0: Switch to using edge port for all service endpoints by default
-* v0.25: Add endpoint for AWS Kinesis Analytics; prepare for replacing service ports with edge port
-* v0.24: Add endpoints for AWS Transfer, ACM, and CodeCommit
-* v0.23: Add endpoints for AWS Autoscaling and MediaStore
-* v0.22: Import boto3 under different name to simplify mocking
-* v0.20: Add endpoints for AWS CloudTrail, Glacier, Batch, Organizations
-* v0.19: Add endpoints for AWS ECR and QLDB
-* v0.18: Add endpoint for AWS API Gateway V2
-* v0.16: Add endpoint for AWS SageMaker
-* v0.15: Add endpoint for AWS Glue
-* v0.14: Add endpoint for AWS Athena
-* v0.13: Add endpoint for AWS CloudFront
-* v0.8: Add more service endpoint mappings that will be implemented in the near future
-* v0.7: Add endpoint for AWS Step Functions
-* v0.6: Add endpoint for AWS Secrets Manager
-* v0.5: Fix passing of credentials to client session
-* v0.4: Add functions to retrieve service port mappings
-* v0.3: Add new service endpoints
-* v0.2: Add missing service endpoints; enable SSL connections; put default endpoints into `config.py`
-* v0.1: Initial version
+Please refer to [`CHANGELOG.md`](CHANGELOG.md) to see the complete list of changes for each release.
 
 ## License
 
