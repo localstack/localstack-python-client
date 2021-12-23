@@ -1,0 +1,46 @@
+name: LocalStack Python Client CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version:
+          - "3.9"
+          - "3.8"
+          - "3.7"
+          - "3.6"
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Upgrade pip version
+        run: |
+          python3 -m pip install --upgrade pip
+
+      - name: Install Dependencies
+        run: |
+          make install
+
+      - name: Test
+        run: |
+          pip install pep8 nose boto3 localstack
+          docker pull localstack/localstack
+          localstack start -d
+          make test
+
+      - name: Lint
+        run: |
+          make lint
