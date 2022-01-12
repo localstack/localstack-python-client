@@ -7,12 +7,9 @@ STATE = {}
 def setup_package():
     if STATE.get('process'):
         return
-    STATE['process'] = subprocess.Popen(['localstack', 'start'])
-    time.sleep(10)
+    STATE['process'] = subprocess.Popen(['localstack', 'start', '-d'])
+    subprocess.Popen(['localstack', 'wait']).wait()
 
 
 def teardown_package():
-    # TODO implement "stop" command in LocalStack!
-    # subprocess.check_call('localstack stop', shell=True)
-    STATE['process'].terminate()
-    time.sleep(2)
+    subprocess.Popen(['localstack', 'stop']).wait()
