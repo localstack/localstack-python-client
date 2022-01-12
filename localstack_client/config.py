@@ -15,7 +15,6 @@ _service_endpoints_template = {
     'dynamodb': '{proto}://{host}:4569',
     'dynamodbstreams': '{proto}://{host}:4570',
     'elasticsearch': '{proto}://{host}:4571',
-    'opensearch': '{proto}://{host}:4571',
     's3': '{proto}://{host}:4572',
     'firehose': '{proto}://{host}:4573',
     'lambda': '{proto}://{host}:4574',
@@ -24,6 +23,7 @@ _service_endpoints_template = {
     'redshift': '{proto}://{host}:4577',
     'redshift-data': '{proto}://{host}:4577',
     'es': '{proto}://{host}:4578',
+    'opensearch': '{proto}://{host}:4578',
     'ses': '{proto}://{host}:4579',
     'sesv2': '{proto}://{host}:4579',
     'route53': '{proto}://{host}:4580',
@@ -110,7 +110,7 @@ _service_endpoints_template = {
 # TODO remove service port mapping above entirely
 if os.environ.get('USE_LEGACY_PORTS') not in ['1', 'true']:
     for key, value in _service_endpoints_template.items():
-        if key not in ['dashboard', 'elasticsearch', 'opensearch']:
+        if key not in ['dashboard', 'elasticsearch']:
             _service_endpoints_template[key] = '%s:%s' % (value.rpartition(':')[0], EDGE_PORT)
 
 
