@@ -1,5 +1,6 @@
 # LocalStack Python Client Change Log
 
+* v1.32: Add endpoint for KinesisAnalyticsV2
 * v1.31: Revert mapping for OpenSearch (drop support for `OPENSEARCH_ENDPOINT_STRATEGY=off`)
 * v1.30: Allow legacy port handling for OpenSearch (to support `OPENSEARCH_ENDPOINT_STRATEGY=off`)
 * v1.29: Add endpoint for OpenSearch
