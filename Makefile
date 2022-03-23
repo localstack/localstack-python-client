@@ -1,6 +1,7 @@
 VENV_DIR ?= .venv
 VENV_RUN = . $(VENV_DIR)/bin/activate
 PIP_CMD ?= pip
+BUILD_DIR ?= dist
 
 usage:             ## Show this help
 	@fgrep -h "##" $(MAKEFILE_LIST) | fgrep -v fgrep | sed -e 's/\\$$//' | sed -e 's/##//'
@@ -13,7 +14,7 @@ install:           ## Install dependencies in local virtualenv folder
 
 publish:           ## Publish the library to the central PyPi repository
 	# build and upload archive
-	($(VENV_RUN) && ./setup.py sdist upload)
+	($(VENV_RUN); ./setup.py sdist && twine upload $(BUILD_DIR)/*.tar.gz)
 
 test:              ## Run automated tests
 	($(VENV_RUN); test `which localstack` || pip install .[test]) && \

@@ -1,8 +1,10 @@
 import os
 import json
-from six.moves.urllib.parse import urlparse
+from botocore.serialize import Serializer
 
 # central entrypoint port for all LocalStack API endpoints
+from urllib.parse import urlparse
+
 EDGE_PORT = int(os.environ.get('EDGE_PORT') or 4566)
 
 # NOTE: The endpoints below will soon become deprecated/removed, as the default in the
@@ -140,3 +142,17 @@ def get_service_ports():
     for service, url in endpoints.items():
         result[service] = urlparse(url).port
     return result
+
+
+def patch_expand_host_prefix():
+    """Apply a patch to botocore, to skip adding `data-` host prefixes to endpoint URLs"""
+
+    def _expand_host_prefix(self, parameters, operation_model, *args, **kwargs):
+        result = _expand_host_prefix_orig(self, parameters, operation_model, *args, **kwargs)
+        # skip adding data- prefix, to avoid making requests to http://data-localhost:4566
+        if operation_model.name == "DiscoverInstances" and result == "data-":
+            return None
+        return result
+
+    _expand_host_prefix_orig = Serializer._expand_host_prefix
+    Serializer._expand_host_prefix = _expand_host_prefix

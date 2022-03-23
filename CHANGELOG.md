@@ -1,5 +1,6 @@
 # LocalStack Python Client Change Log
 
+* v1.33: Patch botocore to skip adding `data-` host prefixes to endpoint URLs; remove six dependency
 * v1.32: Add endpoint for KinesisAnalyticsV2
 * v1.31: Revert mapping for OpenSearch (drop support for `OPENSEARCH_ENDPOINT_STRATEGY=off`)
 * v1.30: Allow legacy port handling for OpenSearch (to support `OPENSEARCH_ENDPOINT_STRATEGY=off`)
