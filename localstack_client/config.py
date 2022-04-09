@@ -108,6 +108,7 @@ _service_endpoints_template = {
     'wafv2': '{proto}://{host}:4640',
     'config': '{proto}://{host}:4641',
     'configservice': '{proto}://{host}:4641',
+    'mwaa': '{proto}://{host}:4642',
 }
 
 # TODO remove service port mapping above entirely
@@ -145,12 +146,14 @@ def get_service_ports():
 
 
 def patch_expand_host_prefix():
-    """Apply a patch to botocore, to skip adding `data-` host prefixes to endpoint URLs"""
+    """Apply a patch to botocore, to skip adding host prefixes to endpoint URLs"""
 
     def _expand_host_prefix(self, parameters, operation_model, *args, **kwargs):
         result = _expand_host_prefix_orig(self, parameters, operation_model, *args, **kwargs)
-        # skip adding data- prefix, to avoid making requests to http://data-localhost:4566
-        if operation_model.name == "DiscoverInstances" and result == "data-":
+        # skip adding host prefixes, to avoid making requests to, e.g., http://data-localhost:4566
+        if operation_model.service_model.service_name == "servicediscovery" and result == "data-":
+            return None
+        if operation_model.service_model.service_name == "mwaa" and result == "api.":
             return None
         return result
 
