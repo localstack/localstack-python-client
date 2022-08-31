@@ -66,6 +66,27 @@ sqs = boto3.client('sqs')
 assert sqs.list_queues() is not None  # list SQS in localstack
 ```
 
+### Enabling Transparent Local Endpoints
+
+The library contains a small `enable_local_endpoints()` util function that can be used to transparently run all `boto3` requests against the local endpoints.
+
+The following sample illustrates how it can be used - after calling `enable_local_endpoints()`, the S3 `ListBuckets` call will be run against LocalStack, even though we're using the default boto3 module.
+```
+import boto3
+from localstack_client.patch import enable_local_endpoints()
+enable_local_endpoints()
+# the call below will automatically target the LocalStack endpoints
+buckets = boto3.client("s3").list_buckets()
+```
+
+The patch can also be unapplied by calling `disable_local_endpoints()`:
+```
+from localstack_client.patch import disable_local_endpoints()
+disable_local_endpoints()
+# the call below will target the real AWS cloud again
+buckets = boto3.client("s3").list_buckets()
+```
+
 ## Contributing
 
 If you are interested in contributing to LocalStack Python Client, start by reading our [`CONTRIBUTING.md`](CONTRIBUTING.md) guide. You can further navigate our codebase and [open issues](https://github.com/localstack/localstack-python-client/issues). We are thankful for all the contributions and feedback we receive.

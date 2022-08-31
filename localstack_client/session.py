@@ -1,6 +1,7 @@
 from boto3 import client as boto3_client
 from boto3 import resource as boto3_resource
 from botocore.credentials import Credentials
+
 from localstack_client import config
 
 DEFAULT_SESSION = None
@@ -12,10 +13,17 @@ class Session(object):
     emulate the boto3.session object.
     """
 
-    def __init__(self, aws_access_key_id='accesskey', aws_secret_access_key='secretkey',
-                 aws_session_token='token', region_name='us-east-1',
-                 botocore_session=None, profile_name=None, localstack_host=None):
-        self.env = 'local'
+    def __init__(
+        self,
+        aws_access_key_id="accesskey",
+        aws_secret_access_key="secretkey",
+        aws_session_token="token",
+        region_name="us-east-1",
+        botocore_session=None,
+        profile_name=None,
+        localstack_host=None,
+    ):
+        self.env = "local"
         self.aws_access_key_id = aws_access_key_id
         self.aws_secret_access_key = aws_secret_access_key
         self.aws_session_token = aws_session_token
@@ -23,19 +31,21 @@ class Session(object):
         self._service_endpoint_mapping = config.get_service_endpoints(localstack_host)
 
         self.common_protected_kwargs = {
-            'aws_access_key_id': self.aws_access_key_id,
-            'aws_secret_access_key': self.aws_secret_access_key,
-            'region_name': self.region_name,
-            'verify': False
+            "aws_access_key_id": self.aws_access_key_id,
+            "aws_secret_access_key": self.aws_secret_access_key,
+            "region_name": self.region_name,
+            "verify": False,
         }
 
     def get_credentials(self):
         """
         Returns botocore.credential.Credential object.
         """
-        return Credentials(access_key=self.aws_access_key_id,
-                           secret_key=self.aws_secret_access_key,
-                           token=self.aws_session_token)
+        return Credentials(
+            access_key=self.aws_access_key_id,
+            secret_key=self.aws_secret_access_key,
+            token=self.aws_session_token,
+        )
 
     def client(self, service_name, **kwargs):
         """
@@ -45,12 +55,15 @@ class Session(object):
         Returns boto3.resources.factory.s3.ServiceClient object
         """
         if service_name not in self._service_endpoint_mapping:
-            raise Exception('%s is not supported by this mock session.' % (service_name))
+            raise Exception(
+                "%s is not supported by this mock session." % (service_name)
+            )
 
-        protected_kwargs = {**self.common_protected_kwargs,
-                            'service_name': service_name,
-                            'endpoint_url': self._service_endpoint_mapping[service_name]
-                            }
+        protected_kwargs = {
+            **self.common_protected_kwargs,
+            "service_name": service_name,
+            "endpoint_url": self._service_endpoint_mapping[service_name],
+        }
 
         return boto3_client(**{**kwargs, **protected_kwargs})
 
@@ -62,12 +75,15 @@ class Session(object):
         Returns boto3.resources.factory.s3.ServiceResource object
         """
         if service_name not in self._service_endpoint_mapping:
-            raise Exception('%s is not supported by this mock session.' % (service_name))
+            raise Exception(
+                "%s is not supported by this mock session." % (service_name)
+            )
 
-        protected_kwargs = {**self.common_protected_kwargs,
-                            'service_name': service_name,
-                            'endpoint_url': self._service_endpoint_mapping[service_name]
-                            }
+        protected_kwargs = {
+            **self.common_protected_kwargs,
+            "service_name": service_name,
+            "endpoint_url": self._service_endpoint_mapping[service_name],
+        }
 
         return boto3_resource(**{**kwargs, **protected_kwargs})
 

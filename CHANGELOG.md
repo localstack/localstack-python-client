@@ -1,6 +1,6 @@
 # LocalStack Python Client Change Log
 
-* v1.37: Add endpoint for Amazon Transcribe
+* v1.37: Add endpoint for Amazon Transcribe; add enable_local_endpoints() util function
 * v1.36: Add endpoints for Fault Injection Service (FIS) and Marketplace Metering
 * v1.35: Add endpoint for Amazon Managed Workflows for Apache Airflow (MWAA)
 * v1.33: Patch botocore to skip adding `data-` host prefixes to endpoint URLs; remove six dependency
