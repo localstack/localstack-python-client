@@ -6,14 +6,26 @@ from botocore.serialize import Serializer
 
 _state = {}
 
+DEFAULT_ACCESS_KEY_ID = "test"
+DEFAULT_SECRET_ACCESS_KEY = "test"
+
 
 def enable_local_endpoints():
     """Patch the boto3 library to transparently use the LocalStack endpoints by default."""
     from localstack_client.config import get_service_endpoint
 
-    if _state.get("_client_orig"):
-        # patch already applied -> return
-        return
+    def _add_custom_kwargs(
+        kwargs,
+        service_name,
+        endpoint_url=None,
+        aws_access_key_id=None,
+        aws_secret_access_key=None,
+    ):
+        kwargs["endpoint_url"] = endpoint_url or get_service_endpoint(service_name)
+        kwargs["aws_access_key_id"] = aws_access_key_id or DEFAULT_ACCESS_KEY_ID
+        kwargs["aws_secret_access_key"] = (
+            aws_secret_access_key or DEFAULT_SECRET_ACCESS_KEY
+        )
 
     def _client(
         self,
@@ -27,9 +39,13 @@ def enable_local_endpoints():
         aws_secret_access_key=None,
         **kwargs,
     ):
-        endpoint_url = endpoint_url or get_service_endpoint(service_name)
-        aws_access_key_id = aws_access_key_id or "test"
-        aws_secret_access_key = aws_secret_access_key or "test"
+        _add_custom_kwargs(
+            kwargs,
+            service_name,
+            endpoint_url=endpoint_url,
+            aws_access_key_id=aws_access_key_id,
+            aws_secret_access_key=aws_secret_access_key,
+        )
         return _client_orig(
             self,
             service_name,
@@ -37,9 +53,6 @@ def enable_local_endpoints():
             api_version=api_version,
             use_ssl=use_ssl,
             verify=verify,
-            endpoint_url=endpoint_url,
-            aws_access_key_id=aws_access_key_id,
-            aws_secret_access_key=aws_secret_access_key,
             **kwargs,
         )
 
@@ -55,9 +68,13 @@ def enable_local_endpoints():
         aws_secret_access_key=None,
         **kwargs,
     ):
-        endpoint_url = endpoint_url or get_service_endpoint(service_name)
-        aws_access_key_id = aws_access_key_id or "test"
-        aws_secret_access_key = aws_secret_access_key or "test"
+        _add_custom_kwargs(
+            kwargs,
+            service_name,
+            endpoint_url=endpoint_url,
+            aws_access_key_id=aws_access_key_id,
+            aws_secret_access_key=aws_secret_access_key,
+        )
         return _resource_orig(
             self,
             service_name,
@@ -65,11 +82,12 @@ def enable_local_endpoints():
             api_version=api_version,
             use_ssl=use_ssl,
             verify=verify,
-            endpoint_url=endpoint_url,
-            aws_access_key_id=aws_access_key_id,
-            aws_secret_access_key=aws_secret_access_key,
             **kwargs,
         )
+
+    if _state.get("_client_orig"):
+        # patch already applied -> return
+        return
 
     # patch boto3 default session (if available)
     try:
