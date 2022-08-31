@@ -14,16 +14,19 @@ install:           ## Install dependencies in local virtualenv folder
 
 publish:           ## Publish the library to the central PyPi repository
 	# build and upload archive
-	($(VENV_RUN); ./setup.py sdist && twine upload $(BUILD_DIR)/*.tar.gz)
+	$(VENV_RUN); ./setup.py sdist && twine upload $(BUILD_DIR)/*.tar.gz
 
 test:              ## Run automated tests
 	($(VENV_RUN); test `which localstack` || pip install .[test]) && \
-	$(VENV_RUN); DEBUG=$(DEBUG) PYTHONPATH=`pwd` nosetests --with-coverage --logging-level=WARNING --nocapture --no-skip --exe --cover-erase --cover-tests --cover-inclusive --cover-package=localstack_client --with-xunit --exclude='$(VENV_DIR).*' .
+	$(VENV_RUN); DEBUG=$(DEBUG) PYTHONPATH=. pytest -sv $(PYTEST_ARGS) tests
 
 lint:              ## Run code linter to check code style
-	($(VENV_RUN); pycodestyle --max-line-length=100 --ignore=E128 --exclude=node_modules,legacy,$(VENV_DIR),dist .)
+	$(VENV_RUN); flake8 --ignore=E501 localstack_client tests
+
+format:            ## Run code formatter (black)
+	$(VENV_RUN); black localstack_client tests; isort localstack_client tests
 
 clean:             ## Clean up virtualenv
 	rm -rf $(VENV_DIR)
 
-.PHONY: usage install clean publish test lint
+.PHONY: usage install clean publish test lint format

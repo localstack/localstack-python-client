@@ -1,5 +1,6 @@
 # LocalStack Python Client Change Log
 
+* v1.38: Add `enable_local_endpoints()` util function; slight project refactoring, migrate from `nose` to `pytests`
 * v1.37: Add endpoint for Amazon Transcribe
 * v1.36: Add endpoints for Fault Injection Service (FIS) and Marketplace Metering
 * v1.35: Add endpoint for Amazon Managed Workflows for Apache Airflow (MWAA)
