@@ -114,6 +114,7 @@ _service_endpoints_template = {
     "fis": "{proto}://{host}:4643",
     "meteringmarketplace": "{proto}://{host}:4644",
     "transcribe": "{proto}://{host}:4566",
+    "mq": "{proto}://{host}:4566"
 }
 
 # TODO remove service port mapping above entirely
