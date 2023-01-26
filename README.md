@@ -66,6 +66,15 @@ sqs = boto3.client('sqs')
 assert sqs.list_queues() is not None  # list SQS in localstack
 ```
 
+## Configurations
+
+You can use the following environment variables for configuration:
+
+* `LOCALSTACK_HOST`: Set the hostname for the LocalStack instance. Useful when you have
+LocalStack bound to a different host (e.g., within docker-compose).
+* `EDGE_PORT`: Port number to use when connecting to LocalStack services. Defaults to `4566`.
+* `USE_SSL`: Whether to use `https` endpoint URLs. Defaults to `false`.
+
 ### Enabling Transparent Local Endpoints
 
 The library contains a small `enable_local_endpoints()` util function that can be used to transparently run all `boto3` requests against the local endpoints.
