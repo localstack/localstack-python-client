@@ -1,6 +1,5 @@
-import json
 import os
-from typing import Dict
+from typing import Dict, Optional
 from urllib.parse import urlparse
 
 # note: leave this import here for now, as some upstream code is depending on it (TODO needs to be updated)
@@ -9,122 +8,122 @@ from localstack_client.patch import patch_expand_host_prefix  # noqa
 # central entrypoint port for all LocalStack API endpoints
 EDGE_PORT = int(os.environ.get("EDGE_PORT") or 4566)
 
-# NOTE: The endpoints below will soon become deprecated/removed, as the default in the
-# latest version is to access all services via a single "edge service" (port 4566 by default)
-_service_endpoints_template = {
-    "edge": "{proto}://{host}:4566",
-    "apigateway": "{proto}://{host}:4567",
-    "apigatewayv2": "{proto}://{host}:4567",
-    "kinesis": "{proto}://{host}:4568",
-    "dynamodb": "{proto}://{host}:4569",
-    "dynamodbstreams": "{proto}://{host}:4570",
-    "elasticsearch": "{proto}://{host}:4571",
-    "s3": "{proto}://{host}:4572",
-    "firehose": "{proto}://{host}:4573",
-    "lambda": "{proto}://{host}:4574",
-    "sns": "{proto}://{host}:4575",
-    "sqs": "{proto}://{host}:4576",
-    "redshift": "{proto}://{host}:4577",
-    "redshift-data": "{proto}://{host}:4577",
-    "es": "{proto}://{host}:4578",
-    "opensearch": "{proto}://{host}:4578",
-    "ses": "{proto}://{host}:4579",
-    "sesv2": "{proto}://{host}:4579",
-    "route53": "{proto}://{host}:4580",
-    "route53resolver": "{proto}://{host}:4580",
-    "cloudformation": "{proto}://{host}:4581",
-    "cloudwatch": "{proto}://{host}:4582",
-    "ssm": "{proto}://{host}:4583",
-    "secretsmanager": "{proto}://{host}:4584",
-    "stepfunctions": "{proto}://{host}:4585",
-    "logs": "{proto}://{host}:4586",
-    "events": "{proto}://{host}:4587",
-    "elb": "{proto}://{host}:4588",
-    "iot": "{proto}://{host}:4589",
-    "iotanalytics": "{proto}://{host}:4589",
-    "iotevents": "{proto}://{host}:4589",
-    "iotevents-data": "{proto}://{host}:4589",
-    "iotwireless": "{proto}://{host}:4589",
-    "iot-data": "{proto}://{host}:4589",
-    "iot-jobs-data": "{proto}://{host}:4589",
-    "cognito-idp": "{proto}://{host}:4590",
-    "cognito-identity": "{proto}://{host}:4591",
-    "sts": "{proto}://{host}:4592",
-    "iam": "{proto}://{host}:4593",
-    "rds": "{proto}://{host}:4594",
-    "rds-data": "{proto}://{host}:4594",
-    "cloudsearch": "{proto}://{host}:4595",
-    "swf": "{proto}://{host}:4596",
-    "ec2": "{proto}://{host}:4597",
-    "elasticache": "{proto}://{host}:4598",
-    "kms": "{proto}://{host}:4599",
-    "emr": "{proto}://{host}:4600",
-    "ecs": "{proto}://{host}:4601",
-    "eks": "{proto}://{host}:4602",
-    "xray": "{proto}://{host}:4603",
-    "elasticbeanstalk": "{proto}://{host}:4604",
-    "appsync": "{proto}://{host}:4605",
-    "cloudfront": "{proto}://{host}:4606",
-    "athena": "{proto}://{host}:4607",
-    "glue": "{proto}://{host}:4608",
-    "sagemaker": "{proto}://{host}:4609",
-    "sagemaker-runtime": "{proto}://{host}:4609",
-    "ecr": "{proto}://{host}:4610",
-    "qldb": "{proto}://{host}:4611",
-    "qldb-session": "{proto}://{host}:4611",
-    "cloudtrail": "{proto}://{host}:4612",
-    "glacier": "{proto}://{host}:4613",
-    "batch": "{proto}://{host}:4614",
-    "organizations": "{proto}://{host}:4615",
-    "autoscaling": "{proto}://{host}:4616",
-    "mediastore": "{proto}://{host}:4617",
-    "mediastore-data": "{proto}://{host}:4617",
-    "transfer": "{proto}://{host}:4618",
-    "acm": "{proto}://{host}:4619",
-    "codecommit": "{proto}://{host}:4620",
-    "kinesisanalytics": "{proto}://{host}:4621",
-    "kinesisanalyticsv2": "{proto}://{host}:4621",
-    "amplify": "{proto}://{host}:4622",
-    "application-autoscaling": "{proto}://{host}:4623",
-    "kafka": "{proto}://{host}:4624",
-    "apigatewaymanagementapi": "{proto}://{host}:4625",
-    "timestream": "{proto}://{host}:4626",
-    "timestream-query": "{proto}://{host}:4626",
-    "timestream-write": "{proto}://{host}:4626",
-    "s3control": "{proto}://{host}:4627",
-    "elbv2": "{proto}://{host}:4628",
-    "support": "{proto}://{host}:4629",
-    "neptune": "{proto}://{host}:4594",
-    "docdb": "{proto}://{host}:4594",
-    "servicediscovery": "{proto}://{host}:4630",
-    "serverlessrepo": "{proto}://{host}:4631",
-    "appconfig": "{proto}://{host}:4632",
-    "ce": "{proto}://{host}:4633",
-    "mediaconvert": "{proto}://{host}:4634",
-    "resourcegroupstaggingapi": "{proto}://{host}:4635",
-    "resource-groups": "{proto}://{host}:4636",
-    "efs": "{proto}://{host}:4637",
-    "backup": "{proto}://{host}:4638",
-    "lakeformation": "{proto}://{host}:4639",
-    "waf": "{proto}://{host}:4640",
-    "wafv2": "{proto}://{host}:4640",
-    "config": "{proto}://{host}:4641",
-    "configservice": "{proto}://{host}:4641",
-    "mwaa": "{proto}://{host}:4642",
-    "fis": "{proto}://{host}:4643",
-    "meteringmarketplace": "{proto}://{host}:4644",
-    "transcribe": "{proto}://{host}:4566",
-    "mq": "{proto}://{host}:4566"
+_service_ports: Dict[str, int] = {
+    "edge": 4566,
+    "apigateway": 4567,
+    "apigatewayv2": 4567,
+    "kinesis": 4568,
+    "dynamodb": 4569,
+    "dynamodbstreams": 4570,
+    "elasticsearch": 4571,
+    "s3": 4572,
+    "firehose": 4573,
+    "lambda": 4574,
+    "sns": 4575,
+    "sqs": 4576,
+    "redshift": 4577,
+    "redshift-data": 4577,
+    "es": 4578,
+    "opensearch": 4578,
+    "ses": 4579,
+    "sesv2": 4579,
+    "route53": 4580,
+    "route53resolver": 4580,
+    "cloudformation": 4581,
+    "cloudwatch": 4582,
+    "ssm": 4583,
+    "secretsmanager": 4584,
+    "stepfunctions": 4585,
+    "logs": 4586,
+    "events": 4587,
+    "elb": 4588,
+    "iot": 4589,
+    "iotanalytics": 4589,
+    "iotevents": 4589,
+    "iotevents-data": 4589,
+    "iotwireless": 4589,
+    "iot-data": 4589,
+    "iot-jobs-data": 4589,
+    "cognito-idp": 4590,
+    "cognito-identity": 4591,
+    "sts": 4592,
+    "iam": 4593,
+    "rds": 4594,
+    "rds-data": 4594,
+    "cloudsearch": 4595,
+    "swf": 4596,
+    "ec2": 4597,
+    "elasticache": 4598,
+    "kms": 4599,
+    "emr": 4600,
+    "ecs": 4601,
+    "eks": 4602,
+    "xray": 4603,
+    "elasticbeanstalk": 4604,
+    "appsync": 4605,
+    "cloudfront": 4606,
+    "athena": 4607,
+    "glue": 4608,
+    "sagemaker": 4609,
+    "sagemaker-runtime": 4609,
+    "ecr": 4610,
+    "qldb": 4611,
+    "qldb-session": 4611,
+    "cloudtrail": 4612,
+    "glacier": 4613,
+    "batch": 4614,
+    "organizations": 4615,
+    "autoscaling": 4616,
+    "mediastore": 4617,
+    "mediastore-data": 4617,
+    "transfer": 4618,
+    "acm": 4619,
+    "codecommit": 4620,
+    "kinesisanalytics": 4621,
+    "kinesisanalyticsv2": 4621,
+    "amplify": 4622,
+    "application-autoscaling": 4623,
+    "kafka": 4624,
+    "apigatewaymanagementapi": 4625,
+    "timestream": 4626,
+    "timestream-query": 4626,
+    "timestream-write": 4626,
+    "s3control": 4627,
+    "elbv2": 4628,
+    "support": 4629,
+    "neptune": 4594,
+    "docdb": 4594,
+    "servicediscovery": 4630,
+    "serverlessrepo": 4631,
+    "appconfig": 4632,
+    "ce": 4633,
+    "mediaconvert": 4634,
+    "resourcegroupstaggingapi": 4635,
+    "resource-groups": 4636,
+    "efs": 4637,
+    "backup": 4638,
+    "lakeformation": 4639,
+    "waf": 4640,
+    "wafv2": 4640,
+    "config": 4641,
+    "configservice": 4641,
+    "mwaa": 4642,
+    "fis": 4643,
+    "meteringmarketplace": 4644,
+    "transcribe": 4566,
+    "mq": 4566,
 }
 
 # TODO remove service port mapping above entirely
 if os.environ.get("USE_LEGACY_PORTS") not in ["1", "true"]:
-    for key, value in _service_endpoints_template.items():
+    for key, value in _service_ports.items():
         if key not in ["dashboard", "elasticsearch"]:
-            _service_endpoints_template[key] = f"{value.rpartition(':')[0]}:{EDGE_PORT}"
+            _service_ports[key] = EDGE_PORT
 
 
-def get_service_endpoint(service: str, localstack_host: str = None) -> str:
+def get_service_endpoint(
+    service: str, localstack_host: Optional[str] = None
+) -> Optional[str]:
     """
     Return the local endpoint URL for the given boto3 service (e.g., "s3").
     If $AWS_ENDPOINT_URL is configured in the environment, it is returned directly.
@@ -137,19 +136,15 @@ def get_service_endpoint(service: str, localstack_host: str = None) -> str:
     return endpoints.get(service)
 
 
-def get_service_endpoints(localstack_host: str = None) -> Dict[str, str]:
+def get_service_endpoints(localstack_host: Optional[str] = None) -> Dict[str, str]:
     if localstack_host is None:
-        localstack_host = os.environ.get("LOCALSTACK_HOST", "localhost")
+        localstack_host = os.environ.get("LOCALSTACK_HOST", "localhost:4566")
     protocol = "https" if os.environ.get("USE_SSL") in ("1", "true") else "http"
 
-    return json.loads(
-        json.dumps(_service_endpoints_template)
-        .replace("{proto}", protocol)
-        .replace("{host}", localstack_host)
-    )
+    return {key: f"{protocol}://{localstack_host}" for key in _service_ports.keys()}
 
 
-def get_service_port(service: str) -> int:
+def get_service_port(service: str) -> Optional[int]:
     ports = get_service_ports()
     return ports.get(service)
 
