@@ -8,6 +8,8 @@ from localstack_client.patch import patch_expand_host_prefix  # noqa
 # central entrypoint port for all LocalStack API endpoints
 DEFAULT_EDGE_PORT = 4566
 
+# NOTE: The ports listed below will soon become deprecated/removed, as the default in the
+# latest version is to access all services via a single "edge service" (port 4566 by default)
 _service_ports: Dict[str, int] = {
     "edge": 4566,
     "apigateway": 4567,
