@@ -153,10 +153,11 @@ def parse_localstack_host(given: str) -> Tuple[str, int]:
         raise RuntimeError(f"could not parse {given} into <hostname>:<port>")
 
 
-
 def get_service_endpoints(localstack_host: Optional[str] = None) -> Dict[str, str]:
     if localstack_host is None:
-        localstack_host = os.environ.get("LOCALSTACK_HOST", f"localhost:{DEFAULT_EDGE_PORT}")
+        localstack_host = os.environ.get(
+            "LOCALSTACK_HOST", f"localhost:{DEFAULT_EDGE_PORT}"
+        )
 
     hostname, port = parse_localstack_host(localstack_host)
 
