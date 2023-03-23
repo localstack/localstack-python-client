@@ -1,5 +1,5 @@
 import os
-from typing import Dict, Optional
+from typing import Dict, Optional, Tuple
 from urllib.parse import urlparse
 
 # note: leave this import here for now, as some upstream code is depending on it (TODO needs to be updated)
@@ -136,12 +136,33 @@ def get_service_endpoint(
     return endpoints.get(service)
 
 
+def parse_localstack_host(given: str) -> Tuple[str, int]:
+    parts = given.split(":", 1)
+    if len(parts) == 1:
+        # just hostname
+        return parts[0].strip() or "localhost", DEFAULT_EDGE_PORT
+    elif len(parts) == 2:
+        hostname = parts[0].strip() or "localhost"
+        port_s = parts[1]
+        try:
+            port = int(port_s)
+            return (hostname, port)
+        except Exception:
+            raise RuntimeError(f"could not parse {given} into <hostname>:<port>")
+    else:
+        raise RuntimeError(f"could not parse {given} into <hostname>:<port>")
+
+
+
 def get_service_endpoints(localstack_host: Optional[str] = None) -> Dict[str, str]:
     if localstack_host is None:
-        localstack_host = os.environ.get("LOCALSTACK_HOST", "localhost:4566")
+        localstack_host = os.environ.get("LOCALSTACK_HOST", f"localhost:{DEFAULT_EDGE_PORT}")
+
+    hostname, port = parse_localstack_host(localstack_host)
+
     protocol = "https" if os.environ.get("USE_SSL") in ("1", "true") else "http"
 
-    return {key: f"{protocol}://{localstack_host}" for key in _service_ports.keys()}
+    return {key: f"{protocol}://{hostname}:{port}" for key in _service_ports.keys()}
 
 
 def get_service_port(service: str) -> Optional[int]:
