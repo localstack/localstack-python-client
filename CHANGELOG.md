@@ -1,5 +1,6 @@
 # LocalStack Python Client Change Log
 
+* v2.0: Change `LOCALSTACK_HOSTNAME` from `<hostname>` to `<hostname>:<port>`; remove `EDGE_PORT` environment variable
 * v1.39: Add endpoint for Amazon MQ
 * v1.38: Add `enable_local_endpoints()` util function; slight project refactoring, migrate from `nose` to `pytests`
 * v1.37: Add endpoint for Amazon Transcribe
