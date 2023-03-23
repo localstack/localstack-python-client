@@ -6,7 +6,7 @@ from urllib.parse import urlparse
 from localstack_client.patch import patch_expand_host_prefix  # noqa
 
 # central entrypoint port for all LocalStack API endpoints
-EDGE_PORT = int(os.environ.get("EDGE_PORT") or 4566)
+DEFAULT_EDGE_PORT = 4566
 
 _service_ports: Dict[str, int] = {
     "edge": 4566,
@@ -118,7 +118,7 @@ _service_ports: Dict[str, int] = {
 if os.environ.get("USE_LEGACY_PORTS") not in ["1", "true"]:
     for key, value in _service_ports.items():
         if key not in ["dashboard", "elasticsearch"]:
-            _service_ports[key] = EDGE_PORT
+            _service_ports[key] = DEFAULT_EDGE_PORT
 
 
 def get_service_endpoint(
