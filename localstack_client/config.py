@@ -8,6 +8,7 @@ from localstack_client.patch import patch_expand_host_prefix  # noqa
 # central entrypoint port for all LocalStack API endpoints
 DEFAULT_EDGE_PORT = 4566
 
+# TODO: deprecated, remove!
 # NOTE: The ports listed below will soon become deprecated/removed, as the default in the
 # latest version is to access all services via a single "edge service" (port 4566 by default)
 _service_ports: Dict[str, int] = {
@@ -123,21 +124,6 @@ if os.environ.get("USE_LEGACY_PORTS") not in ["1", "true"]:
             _service_ports[key] = DEFAULT_EDGE_PORT
 
 
-def get_service_endpoint(
-    service: str, localstack_host: Optional[str] = None
-) -> Optional[str]:
-    """
-    Return the local endpoint URL for the given boto3 service (e.g., "s3").
-    If $AWS_ENDPOINT_URL is configured in the environment, it is returned directly.
-    Otherwise, the service endpoint is constructed from the dict of service ports (usually http://localhost:4566).
-    """
-    env_endpoint_url = os.environ.get("AWS_ENDPOINT_URL", "").strip()
-    if env_endpoint_url:
-        return env_endpoint_url
-    endpoints = get_service_endpoints(localstack_host=localstack_host)
-    return endpoints.get(service)
-
-
 def parse_localstack_host(given: str) -> Tuple[str, int]:
     parts = given.split(":", 1)
     if len(parts) == 1:
@@ -156,6 +142,15 @@ def parse_localstack_host(given: str) -> Tuple[str, int]:
 
 
 def get_service_endpoints(localstack_host: Optional[str] = None) -> Dict[str, str]:
+    """
+    Return the local endpoint URLs for the list of supported boto3 services (e.g., "s3", "lambda", etc).
+    If $AWS_ENDPOINT_URL is configured in the environment, it is returned directly. Otherwise,
+    the service endpoint is constructed from the dict of service ports (usually http://localhost:4566).
+    """
+    env_endpoint_url = os.environ.get("AWS_ENDPOINT_URL", "").strip()
+    if env_endpoint_url:
+        return {key: env_endpoint_url for key in _service_ports.keys()}
+
     if localstack_host is None:
         localstack_host = os.environ.get(
             "LOCALSTACK_HOST", f"localhost:{DEFAULT_EDGE_PORT}"
@@ -166,6 +161,13 @@ def get_service_endpoints(localstack_host: Optional[str] = None) -> Dict[str, st
     protocol = "https" if os.environ.get("USE_SSL") in ("1", "true") else "http"
 
     return {key: f"{protocol}://{hostname}:{port}" for key in _service_ports.keys()}
+
+
+def get_service_endpoint(
+    service: str, localstack_host: Optional[str] = None
+) -> Optional[str]:
+    endpoints = get_service_endpoints(localstack_host=localstack_host)
+    return endpoints.get(service)
 
 
 def get_service_port(service: str) -> Optional[int]:

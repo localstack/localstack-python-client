@@ -70,8 +70,9 @@ assert sqs.list_queues() is not None  # list SQS in localstack
 
 You can use the following environment variables for configuration:
 
-* `LOCALSTACK_HOST`: A `<hostname>:<port>` variable defining where to find LocalStack (default: `localhost:4566`).
-* `USE_SSL`: Whether to use SSL when connecting to LocalStack (default: `False`).
+* `AWS_ENDPOINT_URL`: The endpoint URL to connect to (takes precedence over `USE_SSL`/`LOCALSTACK_HOST` below)
+* `LOCALSTACK_HOST` (deprecated): A `<hostname>:<port>` variable defining where to find LocalStack (default: `localhost:4566`).
+* `USE_SSL` (deprecated): Whether to use SSL when connecting to LocalStack (default: `False`).
 
 ### Enabling Transparent Local Endpoints
 
