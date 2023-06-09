@@ -115,6 +115,10 @@ _service_ports: Dict[str, int] = {
     "meteringmarketplace": 4644,
     "transcribe": 4566,
     "mq": 4566,
+    "emr-serverless": 4566,
+    "appflow": 4566,
+    "route53domains": 4566,
+    "keyspaces": 4566,
 }
 
 # TODO remove service port mapping above entirely
