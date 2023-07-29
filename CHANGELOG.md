@@ -1,5 +1,6 @@
 # LocalStack Python Client Change Log
 
+* v2.3: Add endpoint config for Amazon EventBridge Scheduler
 * v2.2: Add endpoint configs for `emr-serverless` and a few other services
 * v2.1: Consider `AWS_ENDPOINT_URL` configuration when resolving service endpoints
 * v2.0: Change `LOCALSTACK_HOSTNAME` from `<hostname>` to `<hostname>:<port>`; remove `EDGE_PORT` environment variable

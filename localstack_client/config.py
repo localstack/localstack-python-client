@@ -119,6 +119,7 @@ _service_ports: Dict[str, int] = {
     "appflow": 4566,
     "route53domains": 4566,
     "keyspaces": 4566,
+    "scheduler": 4566,
 }
 
 # TODO remove service port mapping above entirely
