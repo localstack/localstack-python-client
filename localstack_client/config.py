@@ -99,6 +99,7 @@ _service_ports: Dict[str, int] = {
     "servicediscovery": 4630,
     "serverlessrepo": 4631,
     "appconfig": 4632,
+    "appconfigdata": 4632,
     "ce": 4633,
     "mediaconvert": 4634,
     "resourcegroupstaggingapi": 4635,

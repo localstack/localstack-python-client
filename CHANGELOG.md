@@ -1,5 +1,6 @@
 # LocalStack Python Client Change Log
 
+* v2.5: Add endpoint config for AppConfig Data
 * v2.4: Add endpoint config for Resource Access Manager
 * v2.3: Add endpoint config for Amazon EventBridge Scheduler
 * v2.2: Add endpoint configs for `emr-serverless` and a few other services
