@@ -1,5 +1,6 @@
 # LocalStack Python Client Change Log
 
+* v2.6: Add endpoint config for Pinpoint
 * v2.5: Add endpoint config for AppConfig Data
 * v2.4: Add endpoint config for Resource Access Manager
 * v2.3: Add endpoint config for Amazon EventBridge Scheduler
