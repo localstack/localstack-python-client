@@ -1,5 +1,6 @@
 # LocalStack Python Client Change Log
 
+* v2.7: Add endpoint config for EventBridge Pipes
 * v2.6: Add endpoint config for Pinpoint
 * v2.5: Add endpoint config for AppConfig Data
 * v2.4: Add endpoint config for Resource Access Manager
