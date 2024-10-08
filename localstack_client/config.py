@@ -123,6 +123,7 @@ _service_ports: Dict[str, int] = {
     "scheduler": 4566,
     "ram": 4566,
     "pinpoint": 4566,
+    "pipes": 4566,
 }
 
 # TODO remove service port mapping above entirely
