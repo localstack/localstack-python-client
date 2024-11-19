@@ -1,5 +1,6 @@
 # LocalStack Python Client Change Log
 
+* v2.8: Removes support for python `3.6` and `3.7` and adds `3.12` and `3.13` for parity with boto3
 * v2.7: Add endpoint config for EventBridge Pipes
 * v2.6: Add endpoint config for Pinpoint
 * v2.5: Add endpoint config for AppConfig Data
