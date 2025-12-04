@@ -113,6 +113,7 @@ _service_ports: Dict[str, int] = {
     "route53resolver": 4580,
     "s3": 4572,
     "s3control": 4627,
+    "s3tables": 4566,
     "sagemaker": 4609,
     "sagemaker-runtime": 4609,
     "scheduler": 4566,
