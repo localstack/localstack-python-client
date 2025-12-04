@@ -1,5 +1,6 @@
 # LocalStack Python Client Change Log
 
+* v2.11: Add endpoint config for S3 Tables
 * v2.10: Remove endpoints for 'bedrock-runtime' and 'textract' because overriding them is not supported by the AWS Terraform provider
 * v2.9: Add endpoints for Account Management, Private Certificate Authority, Bedrock, CloudControl, CodeBuild, CodeCommit, CodeConnections, CodeDeploy, CodePipeline, ElasticTranscoder, MemoryDB, Shield, Textract and Verified Permissions
 * v2.8: Removes support for python `3.6` and `3.7` and adds `3.12` and `3.13` for parity with boto3
