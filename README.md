@@ -7,14 +7,14 @@
     <a href="https://pepy.tech/project/localstack-client"><img src="https://pepy.tech/badge/localstack-client" alt="PyPi downloads" height="18"></a>
 </p>
 
-This is an easy-to-use Python client for [LocalStack](https://github.com/localstack/localstack).
+This is an easy-to-use Python client for [LocalStack](https://www.localstack.cloud/).
 The client library provides a thin wrapper around [boto3](https://github.com/boto/boto3) which
 automatically configures the target endpoints to use LocalStack for your local cloud
 application development.
 
 ## Prerequisites
 
-To make use of this library, you need to have [LocalStack](https://github.com/localstack/localstack) installed on your local machine. In particular, the `localstack` command needs to be available.
+To make use of this library, you need to have [LocalStack](https://www.localstack.cloud/) installed on your local machine. In particular, the `localstack` command needs to be available.
 
 ## Installation
 
