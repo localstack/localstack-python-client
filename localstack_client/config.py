@@ -49,6 +49,7 @@ _service_ports: Dict[str, int] = {
     "config": 4641,
     "configservice": 4641,
     "docdb": 4594,
+    "dsql": 4566,
     "dynamodb": 4569,
     "dynamodbstreams": 4570,
     "ec2": 4597,
