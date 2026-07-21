@@ -14,7 +14,10 @@ install:           ## Install dependencies in local virtualenv folder
 
 publish:           ## Publish the library to the central PyPi repository
 	# build and upload archive
-	$(VENV_RUN); ./setup.py sdist && twine upload $(BUILD_DIR)/*.tar.gz
+	rm -rf $(BUILD_DIR)
+	$(VENV_RUN); $(PIP_CMD) install --upgrade build twine && \
+		python -m build --sdist --wheel && \
+		twine upload $(BUILD_DIR)/*
 
 test:              ## Run automated tests
 	($(VENV_RUN); test `which localstack` || pip install .[test]) && \
