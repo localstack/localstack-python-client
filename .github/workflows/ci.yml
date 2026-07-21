@@ -40,3 +40,5 @@ jobs:
 
       - name: Test
         run: make test
+        env:
+          LOCALSTACK_AUTH_TOKEN: ${{ secrets.LOCALSTACK_AUTH_TOKEN }}
